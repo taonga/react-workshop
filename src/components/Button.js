@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const Button = styled.button`
     color: ${(props) => props.color};
-    background-color: #2BB98C;
-    border-color: #2BB98C;
+    background-color: green;
+    border: 1px solid  ${(props) => props.borderColor}; 
     display: inline-block;
     font-weight: normal;
     text-align: center;
@@ -14,7 +14,6 @@ const Button = styled.button`
     user-select: none;
     padding: 0.75rem 1.75rem;
     font-size: 1rem;
-    border: 1px solid transparent;
     border-radius: 0.3rem;
 
     &:hover {
@@ -25,6 +24,11 @@ const Button = styled.button`
 
 export default class extends Component {
  render() {
-   return <Button color={this.props.color || 'red'}>{this.props.children}</Button>
+   return <Button 
+                onClick={this.props.onClick} 
+                color={this.props.color || 'red'} 
+                borderColor={this.props.outline || 'black'}>
+                {this.props.children}
+        </Button>
  }
 }
